@@ -1,0 +1,76 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{89875E99-D82E-4FD5-B36C-226B3FF7E113}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Deerchao.War3Share</RootNamespace>
+    <AssemblyName>Deerchao.War3Share.W3gParser</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Player.cs" />
+    <Compile Include="W3gParser\Block.cs" />
+    <Compile Include="W3gParser\Game.cs" />
+    <Compile Include="W3gParser\GameSetting.cs" />
+    <Compile Include="W3gParser\GameStartRecord.cs" />
+    <Compile Include="W3gParser\Header.cs" />
+    <Compile Include="W3gParser\Map.cs" />
+    <Compile Include="W3gParser\Parser.cs" />
+    <Compile Include="W3gParser\Player.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Replay.cs" />
+    <Compile Include="W3gParser\SlotRecord.cs" />
+    <Compile Include="W3gParser\SubHeader.cs" />
+    <Compile Include="W3gParser\W3gActionBlock.cs" />
+    <Compile Include="W3gParser\W3gCommonDataBlock.cs" />
+    <Compile Include="W3gParser\W3gFile.cs" />
+    <Compile Include="W3gParser\W3gPlayerAction.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Deerchao.War3Share.Utility\Deerchao.War3Share.Utility.csproj">
+      <Project>{629FD330-D5D1-4A20-9EDC-D30B6CF6368A}</Project>
+      <Name>Deerchao.War3Share.Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="documents\w3g_actions.txt" />
+    <Content Include="documents\w3g_format.txt" />
+    <Content Include="licence.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="lib\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
