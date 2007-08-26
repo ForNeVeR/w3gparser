@@ -1,6 +1,5 @@
 using System.IO;
-using System.IO.Compression;
-using Deerchao.War3Share.Utility;
+using ICSharpCode.SharpZipLib.Zip.Compression.Streams;
 
 namespace Deerchao.War3Share.W3gParser
 {
@@ -8,7 +7,7 @@ namespace Deerchao.War3Share.W3gParser
     {
         ushort dataSize;
         ushort decompressSize;
-        uint unknown;
+        uint checksum;
         byte[] decopressedData;
 
         public byte[] DecopressedData
@@ -23,7 +22,7 @@ namespace Deerchao.War3Share.W3gParser
 
             b.dataSize = reader.ReadUInt16();
             b.decompressSize = reader.ReadUInt16();
-            b.unknown = reader.ReadUInt32();
+            b.checksum = reader.ReadUInt32();
             ProcessCompressedData(reader, b);
 
             return b;
@@ -31,22 +30,12 @@ namespace Deerchao.War3Share.W3gParser
 
         private static void ProcessCompressedData(BinaryReader reader, W3gBlock b)
         {
-            byte[] compressedData = reader.ReadBytes(b.dataSize);
-            compressedData[2] += 1;
-            using (MemoryStream ms = new MemoryStream())
+            b.decopressedData = new byte[b.decompressSize];
+            using (MemoryStream ms = new MemoryStream(reader.ReadBytes(b.dataSize)))
             {
-                ms.Write(compressedData, 2, compressedData.Length - 2 - 4);
-
                 ms.Position = 0;
-                using (DeflateStream zipStream = new DeflateStream(ms, CompressionMode.Decompress))
-                {
-                    byte[] temp = new byte[b.decompressSize + 100];
-                    int length = BinaryHelper.ReadAllBytesFromStream(zipStream, temp);
-
-                    b.decopressedData = new byte[length];
-                    for (int i = 0; i < b.decopressedData.Length; i++)
-                        b.decopressedData[i] = temp[i];
-                }
+                using (InflaterInputStream stream = new InflaterInputStream(ms))
+                    stream.Read(b.decopressedData, 0, b.decompressSize);
             }
         }
     }
@@ -75,6 +64,7 @@ namespace Deerchao.War3Share.W3gParser
 //The last block is padded with 0 bytes up to the 8K border. These bytes can
 //be disregarded.
 
-////TODO: add decompression details and move explanation to seperate file
+// add decompression details and move explanation to seperate file
 
+//It's not deflate, but zlib!!
 #endregion

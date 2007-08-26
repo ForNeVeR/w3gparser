@@ -25,8 +25,17 @@ namespace Deerchao.War3Share
             file = Parser.Parse(filePath);
             this.filePath = filePath;
             Load();
-            //to allow GC collect memory
-            file = null;
+        }
+
+        public Replay(Stream stream)
+        {
+            file = Parser.Parse(stream);
+            Load();
+        }
+
+        public KeyValuePair<int, long> GetMapKey()
+        {
+            return new KeyValuePair<int, long>(GameVersion, Map.CheckSum);
         }
 
         public W3gMap Map
@@ -35,6 +44,9 @@ namespace Deerchao.War3Share
             set { map = value; }
         }
 
+        /// <summary>
+        /// 比如21代表1.21版
+        /// </summary>
         public int GameVersion
         {
             get { return gameVersion; }

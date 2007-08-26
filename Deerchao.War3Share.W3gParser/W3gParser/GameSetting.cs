@@ -24,7 +24,12 @@ namespace Deerchao.War3Share.W3gParser
             for (int i = 0; i < 9; i++)
                 s.options[i] = decoded[i];
 
-            uint checksum = BinaryHelper.GetUInt32(decoded, 9);
+            //uint checksum = BinaryHelper.GetUInt32(decoded, 9);
+            uint checksum = decoded[9];
+            checksum |= (uint)decoded[10] << 8;
+            checksum |= (uint)decoded[11] << 16;
+            checksum |= (uint)decoded[12] << 24;
+
             string path = BinaryHelper.GetString(decoded, 13);
             s.map = new W3gMap(checksum, path);
 
@@ -121,7 +126,7 @@ namespace Deerchao.War3Share.W3gParser
 //Alternatively one could interprete the encoding scheme as follow:
 //Bit 0 of every character was moved to the control byte and set to 1 afterwards.
 
-//TODO: Maybe this gives a simpler decoding algorithm.
+// Maybe this gives a simpler decoding algorithm.
 #endregion
 
 #region 4.4 [GameSettings]
@@ -164,7 +169,7 @@ namespace Deerchao.War3Share.W3gParser
 //0x0007 |       | unknown (0 in ladder games, but not in custom)
 //0x0008 |       | 0
 //-------+-------+---------------------------------------------------------------
-//0x0009 | 4Byte | Map Checksum  //TODO: find algorithm
+//0x0009 | 4Byte | Map Checksum  
 // -  0C |       |
 //-------+-------+---------------------------------------------------------------
 #endregion

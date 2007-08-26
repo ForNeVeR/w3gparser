@@ -146,7 +146,6 @@ namespace Deerchao.War3Share.W3gParser
 //       |           |  0x08 - if it is a private Battle.net game
 //0x0002 |  1 word   | unknown (always 0x0000 so far)
 
-//TODO:
 //  values in patch >=1.07:
 //    01 00 00 00 : ladder 1on1 / custom scenario
 //    20 00 00 00 : ladder team
@@ -176,5 +175,4 @@ namespace Deerchao.War3Share.W3gParser
 //A0 F6 6D 00 - patch 1.03 ger
 //C0 F6 6D 00 - patch 1.02 ger
 
-////TODO: Find out what this field is really about.
 #endregion
