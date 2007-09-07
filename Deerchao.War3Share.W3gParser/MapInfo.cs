@@ -1,32 +1,26 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Deerchao.War3Share.W3gParser
 {
-    public class W3gMap
+    public class MapInfo
     {
-        public W3gMap(uint checksum, string path)
+        private readonly string path;
+        private readonly long hash;
+
+        public MapInfo(long hash, string path)
         {
-            this.checkSum = checksum;
+            this.hash = hash;
             this.path = path;
         }
-
-        string path;
 
         public string Path
         {
             get { return path; }
-            set { path = value; }
         }
 
-        long checkSum;
-
-        public long CheckSum
+        public long Hash
         {
-            get { return checkSum; }
-            set { checkSum = value; }
+            get { return hash; }
         }
 
         public string GetName()
