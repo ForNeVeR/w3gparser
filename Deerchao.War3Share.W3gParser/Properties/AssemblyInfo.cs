@@ -1,15 +1,16 @@
 ﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // 有关程序集的常规信息通过下列属性集
 // 控制。更改这些属性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("Deerchao.War3Share.W3gParser")]
-[assembly: AssemblyDescription("Blizzard Warcraft III game record w3g file parser.")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Deerchao.War3Share.W3gParser")]
-[assembly: AssemblyCopyright("版权所有 (C) deerchao 2007")]
+[assembly: AssemblyCopyright("版权所有 (C)  2007")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -19,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("6eefc8ee-3234-4ee9-aaac-6427214970d9")]
+[assembly: Guid("78c97196-a320-426a-b995-fdcafa8fd29b")]
 
 // 程序集的版本信息由下面四个值组成:
 //
@@ -30,4 +31,4 @@ using System.Runtime.InteropServices;
 //
 // 可以指定所有这些值，也可以使用“修订号”和“内部版本号”的默认值，
 // 方法是按如下所示使用“*”:
-[assembly: AssemblyVersion("1.0.*")]
+[assembly: AssemblyVersion("1.1.*")]
