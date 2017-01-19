@@ -85,7 +85,6 @@
   <ItemGroup>
     <Content Include="documents\w3g_actions.txt" />
     <Content Include="documents\w3g_format.txt" />
-    <Content Include="licence.txt" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
